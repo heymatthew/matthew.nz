@@ -13,7 +13,7 @@
       <link>https://matthew.nz/refactoring/</link>
       <pubDate>Wed, 17 Apr 2024 08:44:24 +1200</pubDate>
       <guid>https://matthew.nz/refactoring/</guid>
-      <description>Jeff Bezos characterised decisions as &amp;ldquo;two-way&amp;rdquo; or &amp;ldquo;one-way&amp;rdquo; doors. A two way door means you can reverse a decision, but a one way door is difficult or expensive to reverse.&#xA;Framing things in this way is freeing because you can allow yourself to experiment knowing things can be undone. Detailed planning is just not required for easily reversable decisions.&#xA;Something I&amp;rsquo;ve grown to realise is that in my workplace some of these experimental decisions have the people around me feeling like they&amp;rsquo;re irreversable.</description>
+      <description>On Friday (2024-04-26) I&amp;rsquo;m presenting on Refactoring. It is a 1hr timeslot.&#xA;What do I want people to walk away feeling? That decisions about the structure of code are not permanent, that it&amp;rsquo;s healthy to experiment, we shouldn&amp;rsquo;t go into too much detail with structure unless our objects reflect the domain language lines up (see DDD).&#xA;50 min, 5 min slides, 10 slides.&#xA;Fallacies— “Refactoring = Improving code” improving is about understandability, your peers it’s about structural change, not code Evolution is multiple competing ideas or things where the best wins.</description>
     </item>
   </channel>
 </rss>
