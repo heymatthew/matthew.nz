@@ -4,16 +4,16 @@
     <title>Hello on Blogging like a billionare</title>
     <link>https://matthew.nz/</link>
     <description>Recent content in Hello on Blogging like a billionare</description>
-    <generator>Hugo 0.125.1</generator>
+    <generator>Hugo</generator>
     <language>en-nz</language>
-    <lastBuildDate>Wed, 17 Apr 2024 08:44:24 +1200</lastBuildDate>
+    <lastBuildDate>Wed, 01 May 2024 08:24:01 +1200</lastBuildDate>
     <atom:link href="https://matthew.nz/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Refactoring</title>
       <link>https://matthew.nz/refactoring/</link>
-      <pubDate>Wed, 17 Apr 2024 08:44:24 +1200</pubDate>
+      <pubDate>Wed, 01 May 2024 08:24:01 +1200</pubDate>
       <guid>https://matthew.nz/refactoring/</guid>
-      <description>On Friday (2024-04-26) I&amp;rsquo;m presenting on Refactoring. It is a 1hr timeslot.&#xA;What do I want people to walk away feeling? That decisions about the structure of code are not permanent, that it&amp;rsquo;s healthy to experiment, we shouldn&amp;rsquo;t go into too much detail with structure unless our objects reflect the domain language lines up (see DDD).&#xA;50 min, 5 min slides, 10 slides.&#xA;Fallacies— “Refactoring = Improving code” improving is about understandability, your peers it’s about structural change, not code Evolution is multiple competing ideas or things where the best wins.</description>
+      <description>Goal: What do I want people to walk away feeling? That decisions about the structure of code are not permanent, that it&amp;rsquo;s healthy to experiment, we shouldn&amp;rsquo;t go into too much detail with structure unless our objects reflect the domain language lines up (see DDD).&#xA;Indirection only solves some problems, and always at the cost of dev ergonomics.&#xA;But it does solve problems. To be successful you&amp;rsquo;re going to have to get good at making bets on what works and what doesn&amp;rsquo;t.</description>
     </item>
   </channel>
 </rss>
