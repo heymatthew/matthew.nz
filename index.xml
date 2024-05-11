@@ -9,11 +9,11 @@
     <lastBuildDate>Wed, 01 May 2024 08:24:01 +1200</lastBuildDate>
     <atom:link href="https://matthew.nz/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Refactoring</title>
+      <title>Refactoring: If this, then that</title>
       <link>https://matthew.nz/refactoring/</link>
       <pubDate>Wed, 01 May 2024 08:24:01 +1200</pubDate>
       <guid>https://matthew.nz/refactoring/</guid>
-      <description>Goal: What do I want people to walk away feeling? That decisions about the structure of code are not permanent, that it&amp;rsquo;s healthy to experiment, we shouldn&amp;rsquo;t go into too much detail with structure unless our objects reflect the domain language lines up (see DDD).&#xA;Indirection only solves some problems, and always at the cost of dev ergonomics.&#xA;But it does solve problems. To be successful you&amp;rsquo;re going to have to get good at making bets on what works and what doesn&amp;rsquo;t.</description>
+      <description>Step 1: Setup your Test Harness Tests stop you from falling off the cliff face. Snapshot tests Adapting existing tests Uncle bob: As the tests become more specific, the code becomes more general&#xA;Step 2: Recognise code smells Mysterious name: Variable, Method, or Class with unclear purpose&#xA;Change Function declaration Rename varible Rename field Duplicated code: Duplicated code structures&#xA;Extract function Slide statements Pull up method Long function: Hard to understand function</description>
     </item>
   </channel>
 </rss>

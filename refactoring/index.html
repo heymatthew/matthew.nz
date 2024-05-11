@@ -3,69 +3,592 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-        <link rel="stylesheet" href="/styles.min.d0c919d692f5a75365a0bf3ca6c4d2bd5da4699744a3d7f85d2845db104c1287.css" integrity="sha256-0MkZ1pL1p1NloL88psTSvV2kaZdEo9f4XShF2xBMEoc=" crossorigin="anonymous">
+        <link rel="stylesheet" href="/styles.min.4211a302d279b47173c26aaefbbd2659dc86a02beefe40c8eccabd5e90a535d2.css" integrity="sha256-QhGjAtJ5tHFzwmqu&#43;70mWdyGoCvu/kDI7Mq9XpClNdI=" crossorigin="anonymous">
     
 </head>
 <body>
 
-    <h1>Refactoring</h1>
-    <p>Goal: What do I want people to walk away feeling? That decisions about the structure of code are not permanent, that it&rsquo;s healthy to experiment, we shouldn&rsquo;t go into too much detail with structure unless our objects reflect the domain language lines up (see DDD).</p>
-<p>Indirection only solves some problems, and always at the cost of dev ergonomics.</p>
-<p>But it does solve problems. To be successful you&rsquo;re going to have to get good at making bets on what works and what doesn&rsquo;t. You&rsquo;re also going to have to get comfortable with other people&rsquo;s bets.</p>
-<p>But decisions are not forever. We can change them.</p>
-<p>Low tech, high utility. Contrast Chitty Chitty Bang Bang.</p>
-<p>There’s something flat about presenting the world as integers, strings, lists, and maps. We have rules for interacting with them, presenting them, limiting them</p>
-<p>50 min, 5 min slides, 10 slides.</p>
-<ol>
-<li>Fallacies— “Refactoring = Improving code”</li>
-</ol>
+    <h1>Refactoring: If this, then that</h1>
+    <h2 id="step-1-setup-your-test-harness">Step 1: Setup your Test Harness</h2>
+<p>Tests stop you from falling off the cliff face.
+Snapshot tests
+Adapting existing tests
+Uncle bob: As the tests become more specific, the code becomes more general</p>
+<h2 id="step-2-recognise-code-smells">Step 2: Recognise code smells</h2>
+<p>Mysterious name: Variable, Method, or Class with unclear purpose</p>
 <ul>
-<li>improving is about understandability, your peers</li>
-<li>it’s about structural change, not code</li>
+<li>Change Function declaration</li>
+<li>Rename varible</li>
+<li>Rename field</li>
 </ul>
-<p>Evolution is multiple competing ideas or things where the best wins. If you don’t have more than one example, it’s not evolution.</p>
-<ol start="2">
-<li>Examples of refactoring
-<a href="https://chelseatroy.com/2022/08/03/how-i-do-and-dont-prepare-a-talk-for-a-technical-conference/">https://chelseatroy.com/2022/08/03/how-i-do-and-dont-prepare-a-talk-for-a-technical-conference/</a></li>
-</ol>
-<p>Use tech debt example
-Use extending requirements
-Use accidental load bearing example</p>
-<p>Two ways remove bugs: make it so so simple you catch them all, or make it so complicated they can’t be found</p>
-<ol start="3">
-<li>
-<p>Code smells</p>
-</li>
-<li>
-<p>Examples of code smells</p>
-</li>
-<li>
-<p>Code smell 1 + fix</p>
-</li>
-<li>
-<p>Code smell 2 + fix</p>
-</li>
-<li>
-<p>Code smell 3 + fix</p>
-</li>
-<li>
-<p>Make the change easy, then make the easy change</p>
-</li>
-</ol>
+<p>Duplicated code: Duplicated code structures</p>
 <ul>
-<li>break your changes up</li>
+<li>Extract function</li>
+<li>Slide statements</li>
+<li>Pull up method</li>
 </ul>
-<ol start="9">
-<li>Tools for code review</li>
-</ol>
+<p>Long function: Hard to understand function</p>
 <ul>
-<li>github stacked prs</li>
-<li>autosquash rebase</li>
-<li>update refs</li>
+<li>Extract function</li>
+<li>Replace temp with query</li>
+<li>Introduce parameter object</li>
+<li>Preserve whole object</li>
+<li>Replace function with command</li>
+<li>Decompose conditional</li>
+<li>Replace conditional with polymorphism</li>
+<li>Split loop</li>
 </ul>
-<ol start="10">
-<li>Review and resources</li>
-</ol>
+<p>Long parametrised List: Too many arguments</p>
+<ul>
+<li>Replace parameter with query</li>
+<li>Preserve whole object</li>
+<li>Introduce parameter object</li>
+<li>Remove flag argument</li>
+<li>Combine functions into class</li>
+</ul>
+<p>Global Data: Data modified from anywhere in the codebase</p>
+<ul>
+<li>Encapsulate variable</li>
+</ul>
+<p>Mutable Data: Changing data structures in place</p>
+<ul>
+<li>Encapsulate variable</li>
+<li>Split variable</li>
+<li>Slide statements</li>
+<li>Extract function</li>
+<li>Separate query from modifier</li>
+<li>Remove setting methods</li>
+<li>Replace derived variable with query</li>
+<li>Combine functions into class</li>
+<li>Combine functions into transform</li>
+<li>Change reference to value</li>
+</ul>
+<p>Divergent Change: A Module having more than one reason to change</p>
+<p>Antonym: Shotgun surgery</p>
+<ul>
+<li>Split phase</li>
+<li>Move function</li>
+<li>Extract function</li>
+<li>Extract class</li>
+</ul>
+<p>Shotgun Surgury: Change that require updates to many classes</p>
+<p>Antonym: Divergent change</p>
+<ul>
+<li>Move function</li>
+<li>Move field</li>
+<li>Combine functions into class</li>
+<li>Combine functions into transform</li>
+<li>Inline function</li>
+<li>Inline class</li>
+</ul>
+<p>Feature Envy: Repeated calls to functions/data in another module</p>
+<p>Related: Inappropriate Intimacy: Using internal fields of another class</p>
+<ul>
+<li>Move function</li>
+<li>Extract function</li>
+</ul>
+<p>Data Clumps: Fields or objects often found together</p>
+<ul>
+<li>Extract class</li>
+<li>Introduce parameter object</li>
+<li>Preserver whole object</li>
+</ul>
+<p>Primitive Obsession</p>
+<ul>
+<li>Replace primitive with object</li>
+<li>Replace type code with subclasses</li>
+<li>Replace conditional with polymorphism</li>
+<li>Extract class</li>
+<li>Introduce parameter object</li>
+</ul>
+<p>Repeated Switches</p>
+<ul>
+<li>Replace conditional with polymorphism</li>
+</ul>
+<p>Loops</p>
+<ul>
+<li>Replace loop with pipeline</li>
+</ul>
+<p>Lazy Element: A class with one function. Function names too similar to it&rsquo;s body.</p>
+<ul>
+<li>Inline function</li>
+<li>Inline class</li>
+<li>Collapse hierarchy</li>
+</ul>
+<p>Speculative Generality: Unused design. Functionality only used by test cases.</p>
+<ul>
+<li>Collapse hierarchy</li>
+<li>Inline function</li>
+<li>Inline class</li>
+<li>Change function declaration</li>
+<li>Remove dead code</li>
+</ul>
+<p>Temporary Field: Properties rarely used or used to toggle behaviour</p>
+<ul>
+<li>Extract class</li>
+<li>Move function</li>
+<li>Introduce special case</li>
+</ul>
+<p>Message Chains: Modules that know about modules far away from it</p>
+<p>Related: Law of demeter</p>
+<ul>
+<li>Hide delegate</li>
+<li>Extract function</li>
+<li>Move function</li>
+</ul>
+<p>Middle Man: Most methods delegate to another class</p>
+<ul>
+<li>Remove middle man</li>
+<li>Inline function</li>
+<li>Replace superclass with delegate</li>
+<li>Replace subclass with delegate</li>
+</ul>
+<p>Inside Trader: Passing data excessively between modules</p>
+<ul>
+<li>Move function</li>
+<li>Move field</li>
+<li>Hide delegate</li>
+<li>Replace subclass with delegate</li>
+<li>Replace superclass with delegate</li>
+</ul>
+<p>Large Class</p>
+<ul>
+<li>Extract class</li>
+<li>Extract superclass</li>
+<li>Replace type code with subclasses</li>
+</ul>
+<p>Alternative Classes with Different Interfaces: Related classes that cannot be substituted</p>
+<ul>
+<li>Change function declaration</li>
+<li>Move function</li>
+<li>Extract superclass</li>
+</ul>
+<p>Data Class: A class with fields and no behaviour</p>
+<ul>
+<li>Encapsulate record</li>
+<li>Remove setter method</li>
+<li>Move function</li>
+<li>Extract function</li>
+<li>Split phase</li>
+</ul>
+<p>Refused Bequest: A subclass which doesn&rsquo;t use parent methods/data</p>
+<ul>
+<li>Push down method</li>
+<li>Push down field</li>
+<li>Replace subclass with delegate</li>
+<li>Replace superclass with delegate</li>
+</ul>
+<p>Comments</p>
+<ul>
+<li>Extract function</li>
+<li>Change function declaration</li>
+<li>Introduce assertion</li>
+</ul>
+<h2 id="step-3-apply-refactorings">Step 3: Apply refactorings</h2>
+<h1 id="but-what-if-it-was-smells--patterns">But what if it was Smells =&gt; Patterns?</h1>
+<p>Smell =&gt; Pattern List</p>
+<p>Mysterious name: Variable, Method, or Class with unclear purpose</p>
+<ul>
+<li>Change Function declaration</li>
+<li>Rename varible</li>
+<li>Rename field</li>
+</ul>
+<p>Duplicated code: Duplicated code structures</p>
+<ul>
+<li>Extract function</li>
+<li>Slide statements</li>
+<li>Pull up method</li>
+</ul>
+<p>Long function: Hard to understand function</p>
+<ul>
+<li>Extract function</li>
+<li>Replace temp with query</li>
+<li>Introduce parameter object</li>
+<li>Preserve whole object</li>
+<li>Replace function with command</li>
+<li>Decompose conditional</li>
+<li>Replace conditional with polymorphism</li>
+<li>Split loop</li>
+</ul>
+<p>Long parametrised List: Too many arguments</p>
+<ul>
+<li>Replace parameter with query</li>
+<li>Preserve whole object</li>
+<li>Introduce parameter object</li>
+<li>Remove flag argument</li>
+<li>Combine functions into class</li>
+</ul>
+<p>Global Data: Data modified from anywhere in the codebase</p>
+<ul>
+<li>Encapsulate variable</li>
+</ul>
+<p>Mutable Data: Changing data structures in place</p>
+<ul>
+<li>Encapsulate variable</li>
+<li>Split variable</li>
+<li>Slide statements</li>
+<li>Extract function</li>
+<li>Separate query from modifier</li>
+<li>Remove setting methods</li>
+<li>Replace derived variable with query</li>
+<li>Combine functions into class</li>
+<li>Combine functions into transform</li>
+<li>Change reference to value</li>
+</ul>
+<p>Divergent Change: A Module having more than one reason to change</p>
+<p>Antonym: Shotgun surgery</p>
+<ul>
+<li>Split phase</li>
+<li>Move function</li>
+<li>Extract function</li>
+<li>Extract class</li>
+</ul>
+<p>Shotgun Surgury: Change that require updates to many classes</p>
+<p>Antonym: Divergent change</p>
+<ul>
+<li>Move function</li>
+<li>Move field</li>
+<li>Combine functions into class</li>
+<li>Combine functions into transform</li>
+<li>Inline function</li>
+<li>Inline class</li>
+</ul>
+<p>Feature Envy: Repeated calls to functions/data in another module</p>
+<p>Related: Inappropriate Intimacy: Using internal fields of another class</p>
+<ul>
+<li>Move function</li>
+<li>Extract function</li>
+</ul>
+<p>Data Clumps: Fields or objects often found together</p>
+<ul>
+<li>Extract class</li>
+<li>Introduce parameter object</li>
+<li>Preserver whole object</li>
+</ul>
+<p>Primitive Obsession</p>
+<ul>
+<li>Replace primitive with object</li>
+<li>Replace type code with subclasses</li>
+<li>Replace conditional with polymorphism</li>
+<li>Extract class</li>
+<li>Introduce parameter object</li>
+</ul>
+<p>Repeated Switches</p>
+<ul>
+<li>Replace conditional with polymorphism</li>
+</ul>
+<p>Loops</p>
+<ul>
+<li>Replace loop with pipeline</li>
+</ul>
+<p>Lazy Element: A class with one function. Function names too similar to it&rsquo;s body.</p>
+<ul>
+<li>Inline function</li>
+<li>Inline class</li>
+<li>Collapse hierarchy</li>
+</ul>
+<p>Speculative Generality: Unused design. Functionality only used by test cases.</p>
+<ul>
+<li>Collapse hierarchy</li>
+<li>Inline function</li>
+<li>Inline class</li>
+<li>Change function declaration</li>
+<li>Remove dead code</li>
+</ul>
+<p>Temporary Field: Properties rarely used or used to toggle behaviour</p>
+<ul>
+<li>Extract class</li>
+<li>Move function</li>
+<li>Introduce special case</li>
+</ul>
+<p>Message Chains: Modules that know about modules far away from it</p>
+<p>Related: Law of demeter</p>
+<ul>
+<li>Hide delegate</li>
+<li>Extract function</li>
+<li>Move function</li>
+</ul>
+<p>Middle Man: Most methods delegate to another class</p>
+<ul>
+<li>Remove middle man</li>
+<li>Inline function</li>
+<li>Replace superclass with delegate</li>
+<li>Replace subclass with delegate</li>
+</ul>
+<p>Inside Trader: Passing data excessively between modules</p>
+<ul>
+<li>Move function</li>
+<li>Move field</li>
+<li>Hide delegate</li>
+<li>Replace subclass with delegate</li>
+<li>Replace superclass with delegate</li>
+</ul>
+<p>Large Class</p>
+<ul>
+<li>Extract class</li>
+<li>Extract superclass</li>
+<li>Replace type code with subclasses</li>
+</ul>
+<p>Alternative Classes with Different Interfaces: Related classes that cannot be substituted</p>
+<ul>
+<li>Change function declaration</li>
+<li>Move function</li>
+<li>Extract superclass</li>
+</ul>
+<p>Data Class: A class with fields and no behaviour</p>
+<ul>
+<li>Encapsulate record</li>
+<li>Remove setter method</li>
+<li>Move function</li>
+<li>Extract function</li>
+<li>Split phase</li>
+</ul>
+<p>Refused Bequest: A subclass which doesn&rsquo;t use parent methods/data</p>
+<ul>
+<li>Push down method</li>
+<li>Push down field</li>
+<li>Replace subclass with delegate</li>
+<li>Replace superclass with delegate</li>
+</ul>
+<p>Comments</p>
+<ul>
+<li>Extract function</li>
+<li>Change function declaration</li>
+<li>Introduce assertion</li>
+</ul>
+<hr>
+<p>Pattern =&gt; Smell list</p>
+<p>Change Function declaration</p>
+<ul>
+<li>Mysterious name</li>
+</ul>
+<p>Rename varible</p>
+<ul>
+<li>Mysterious name</li>
+</ul>
+<p>Rename field</p>
+<ul>
+<li>Mysterious name</li>
+</ul>
+<p>Extract function</p>
+<ul>
+<li>Antonym</li>
+<li>Comments</li>
+<li>Data Class</li>
+<li>Duplicated code</li>
+<li>Long function</li>
+<li>Mutable Data</li>
+<li>Related</li>
+</ul>
+<p>Slide statements</p>
+<ul>
+<li>Duplicated code</li>
+<li>Mutable Data</li>
+</ul>
+<p>Pull up method</p>
+<ul>
+<li>Duplicated code</li>
+</ul>
+<p>Replace temp with query</p>
+<ul>
+<li>Long function</li>
+</ul>
+<p>Introduce parameter object</p>
+<ul>
+<li>Data Clumps</li>
+<li>Long function</li>
+<li>Long parametrised List</li>
+<li>Primitive Obsession</li>
+</ul>
+<p>Preserve whole object</p>
+<ul>
+<li>Long function</li>
+<li>Long parametrised List</li>
+</ul>
+<p>Replace function with command</p>
+<ul>
+<li>Long function</li>
+</ul>
+<p>Decompose conditional</p>
+<ul>
+<li>Long function</li>
+</ul>
+<p>Replace conditional with polymorphism</p>
+<ul>
+<li>Long function</li>
+<li>Primitive Obsession</li>
+<li>Repeated Switches</li>
+</ul>
+<p>Split loop</p>
+<ul>
+<li>Long function</li>
+</ul>
+<p>Replace parameter with query</p>
+<ul>
+<li>Long parametrised List</li>
+</ul>
+<p>Remove flag argument</p>
+<ul>
+<li>Long parametrised List</li>
+</ul>
+<p>Combine functions into class</p>
+<ul>
+<li>Antonym</li>
+<li>Long parametrised List</li>
+<li>Mutable Data</li>
+</ul>
+<p>Encapsulate variable</p>
+<ul>
+<li>Global Data</li>
+<li>Mutable Data</li>
+</ul>
+<p>Split variable</p>
+<ul>
+<li>Mutable Data</li>
+</ul>
+<p>Separate query from modifier</p>
+<ul>
+<li>Mutable Data</li>
+</ul>
+<p>Remove setting methods</p>
+<ul>
+<li>Mutable Data</li>
+</ul>
+<p>Replace derived variable with query</p>
+<ul>
+<li>Mutable Data</li>
+</ul>
+<p>Combine functions into transform</p>
+<ul>
+<li>Antonym</li>
+<li>Mutable Data</li>
+</ul>
+<p>Change reference to value</p>
+<ul>
+<li>Mutable Data</li>
+</ul>
+<p>Split phase</p>
+<ul>
+<li>Antonym</li>
+<li>Data Class</li>
+</ul>
+<p>Move function</p>
+<ul>
+<li>Alternative Classes with Different Interfaces</li>
+<li>Antonym</li>
+<li>Data Class</li>
+<li>Inside Trader</li>
+<li>Related</li>
+<li>Temporary Field</li>
+</ul>
+<p>Extract class</p>
+<ul>
+<li>Antonym</li>
+<li>Data Clumps</li>
+<li>Large Class</li>
+<li>Primitive Obsession</li>
+<li>Temporary Field</li>
+</ul>
+<p>Move field</p>
+<ul>
+<li>Antonym</li>
+<li>Inside Trader</li>
+</ul>
+<p>Inline function</p>
+<ul>
+<li>Antonym</li>
+<li>Lazy Element</li>
+<li>Middle Man</li>
+<li>Speculative Generality</li>
+</ul>
+<p>Inline class</p>
+<ul>
+<li>Antonym</li>
+<li>Lazy Element</li>
+<li>Speculative Generality</li>
+</ul>
+<p>Preserver whole object</p>
+<ul>
+<li>Data Clumps</li>
+</ul>
+<p>Replace primitive with object</p>
+<ul>
+<li>Primitive Obsession</li>
+</ul>
+<p>Replace type code with subclasses</p>
+<ul>
+<li>Large Class</li>
+<li>Primitive Obsession</li>
+</ul>
+<p>Replace loop with pipeline</p>
+<ul>
+<li>Loops</li>
+</ul>
+<p>Collapse hierarchy</p>
+<ul>
+<li>Lazy Element</li>
+<li>Speculative Generality</li>
+</ul>
+<p>Change function declaration</p>
+<ul>
+<li>Alternative Classes with Different Interfaces</li>
+<li>Comments</li>
+<li>Speculative Generality</li>
+</ul>
+<p>Remove dead code</p>
+<ul>
+<li>Speculative Generality</li>
+</ul>
+<p>Introduce special case</p>
+<ul>
+<li>Temporary Field</li>
+</ul>
+<p>Hide delegate</p>
+<ul>
+<li>Inside Trader</li>
+<li>Related</li>
+</ul>
+<p>Remove middle man</p>
+<ul>
+<li>Middle Man</li>
+</ul>
+<p>Replace superclass with delegate</p>
+<ul>
+<li>Inside Trader</li>
+<li>Middle Man</li>
+<li>Refused Bequest</li>
+</ul>
+<p>Replace subclass with delegate</p>
+<ul>
+<li>Inside Trader</li>
+<li>Middle Man</li>
+<li>Refused Bequest</li>
+</ul>
+<p>Extract superclass</p>
+<ul>
+<li>Alternative Classes with Different Interfaces</li>
+<li>Large Class</li>
+</ul>
+<p>Encapsulate record</p>
+<ul>
+<li>Data Class</li>
+</ul>
+<p>Remove setter method</p>
+<ul>
+<li>Data Class</li>
+</ul>
+<p>Push down method</p>
+<ul>
+<li>Refused Bequest</li>
+</ul>
+<p>Push down field</p>
+<ul>
+<li>Refused Bequest</li>
+</ul>
+<p>Introduce assertion</p>
+<ul>
+<li>Comments</li>
+</ul>
 
 </body>
 </html>
