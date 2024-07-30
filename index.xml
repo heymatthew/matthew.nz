@@ -6,14 +6,21 @@
     <description>Recent content in Hello on Blogging like a billionare</description>
     <generator>Hugo</generator>
     <language>en-nz</language>
-    <lastBuildDate>Wed, 01 May 2024 08:24:01 +1200</lastBuildDate>
+    <lastBuildDate>Wed, 31 Jul 2024 08:53:36 +1200</lastBuildDate>
     <atom:link href="https://matthew.nz/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Refactoring: If this, then that</title>
+      <title>Reflections on Retros</title>
+      <link>https://matthew.nz/retros/</link>
+      <pubDate>Wed, 31 Jul 2024 08:53:36 +1200</pubDate>
+      <guid>https://matthew.nz/retros/</guid>
+      <description>I have a beef with Scrum Retrospectives when we create actions without owners, avoid difficult conversations, and don&amp;rsquo;t see changes over time. The format does not get outcomes for me, but it seems true for those operating at Senior levels or above.&#xA;I prefer to take proactive steps adjust the team environment. I do this by taking action and directly talking to stakeholders. That could mean include engaging delivery managers, creating Architectural Decision Records to align on a technical implementation, or promoting best practice through pairing.</description>
+    </item>
+    <item>
+      <title>Software Landscaping: Methods for adapting code safely</title>
       <link>https://matthew.nz/refactoring/</link>
       <pubDate>Wed, 01 May 2024 08:24:01 +1200</pubDate>
       <guid>https://matthew.nz/refactoring/</guid>
-      <description>Step 1: Setup your Test Harness Tests stop you from falling off the cliff face. Snapshot tests Adapting existing tests Uncle bob: As the tests become more specific, the code becomes more general&#xA;Step 2: Recognise code smells Mysterious name: Variable, Method, or Class with unclear purpose&#xA;Change Function declaration Rename varible Rename field Duplicated code: Duplicated code structures&#xA;Extract function Slide statements Pull up method Long function: Hard to understand function</description>
+      <description>Working titles:&#xA;Landscaping Tricks: Safety adapting code to develop insight Outline&#xA;Pitch: Most of our time is spent understanding code, so &amp;ldquo;readability&amp;rdquo; is the only way to speed up Code Smells Introduction: The best way to make progress is by recognising when something can be better (Cultivating Instinct) Catalogue Introduction Top 5: What refactoring patterns get you the greatest return for the least input Reviewers - Using stacked Pull Requests is kinder for reviewers Tests - How to reshape your architecture in the presence of tight mocking Conclusion: Code Fearlessly DJ Feedback:</description>
     </item>
   </channel>
 </rss>
