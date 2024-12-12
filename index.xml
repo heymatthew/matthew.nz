@@ -1,26 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Hello on Blogging like a billionare</title>
+    <title>Matthew Gray on Blogging like a billionare</title>
     <link>https://matthew.nz/</link>
-    <description>Recent content in Hello on Blogging like a billionare</description>
+    <description>Recent content in Matthew Gray on Blogging like a billionare</description>
     <generator>Hugo</generator>
     <language>en-nz</language>
-    <lastBuildDate>Wed, 31 Jul 2024 08:53:36 +1200</lastBuildDate>
+    <lastBuildDate></lastBuildDate>
     <atom:link href="https://matthew.nz/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Reflections on Retros</title>
-      <link>https://matthew.nz/retros/</link>
-      <pubDate>Wed, 31 Jul 2024 08:53:36 +1200</pubDate>
-      <guid>https://matthew.nz/retros/</guid>
-      <description>Without care the Scrum retrospective format becomes ineffective. Hallmarks include actions without owners, avoidance of difficult conversations, and productivity stagnation. If this is happening and you&amp;rsquo;re able to take proactive steps to adjust the team environment then your role has changed.&#xA;Initially the retrospective format supports you, but as you grow you need to step up to take more responsibility to support the process. Teams where I had experienced people who lifted people up had great retrospectives.</description>
-    </item>
-    <item>
-      <title>Software Landscaping: Methods for adapting code safely</title>
-      <link>https://matthew.nz/refactoring/</link>
-      <pubDate>Wed, 01 May 2024 08:24:01 +1200</pubDate>
-      <guid>https://matthew.nz/refactoring/</guid>
-      <description>Working titles:&#xA;Landscaping Tricks: Safety adapting code to develop insight Outline&#xA;Pitch: Most of our time is spent understanding code, so &amp;ldquo;readability&amp;rdquo; is the only way to speed up Code Smells Introduction: The best way to make progress is by recognising when something can be better (Cultivating Instinct) Catalogue Introduction Top 5: What refactoring patterns get you the greatest return for the least input Reviewers - Using stacked Pull Requests is kinder for reviewers Tests - How to reshape your architecture in the presence of tight mocking Conclusion: Code Fearlessly DJ Feedback:</description>
-    </item>
   </channel>
 </rss>
