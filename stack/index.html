@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+        <link rel="stylesheet" href="/styles.min.f304ab2294c9528a708b5965247b1c35bf3e7083db1ec440beeb55aeee2873e9.css" integrity="sha256-8wSrIpTJUopwi1llJHscNb8&#43;cIPbHsRAvutVru4oc&#43;k=" crossorigin="anonymous">
+    
+</head>
+<body>
+
+    <h1>Stack</h1>
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/PW6eYMalHLI?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
+    </div>
+
+<p>I&rsquo;ve been playing with some of the features in git as a way to communicate my changes to my teams. I&rsquo;ve had feedback about enormous pull requests masking the changes being made, and so I&rsquo;ve done a lot of thinking around workflows that help make those changes easier to understand.</p>
+<p>I&rsquo;ve also smushed some beginning bits to talk about Refactoring.</p>
+<blockquote>
+<p>Pull some weeds before planting your flowers</p></blockquote>
+<p>Before you plant your flowers into your gorse ridden bank, please pull the gorse out&ndash; or at least shuffle it around so there&rsquo;s a tidy bit. When you have a clear patch those flowers grow well. But if you just dump it in there, make a ticket, put it in the backlog and say &ldquo;refactoring&rdquo;&ndash; rewrite the FooBar. No delivery manager is ever going to prioritise it, and it&rsquo;s too late to get the value out of it.</p>
+<p>That&rsquo;s my entire thing.</p>
+<p>Whose had this feeling where poor design slows you down? (graph)
+Sometimes things get big and they slow down. This graph is based on Refactoring 2nd edition.</p>
+<p>Who knows this over feeling with good design keeping you going? (graph) It is possible if anyone didn&rsquo;t see it there are 4 hands that shot up. It&rsquo;s anecdotal but it&rsquo;s a feeling you get.</p>
+<p>We design software to reduce cost.
+Deliver things as fast and as cheaply as possible to respond to the market and to try to test things out. That&rsquo;s what we&rsquo;ve been trying to do for 30 years, get quick feedback loops to adjust our approach.</p>
+<p>If we design software to reduce it&rsquo;s cost
+Then the cost is the cost of changing it. The first edition you produced is not the last one, you&rsquo;ve got to build off it.</p>
+<p>And if you&rsquo;re going to look at the cost of changing software, the cost of changing software is about those expensive changes. Those trivial changes they go out all the time. When you&rsquo;ve got power laws involved and things are coupled to every aspect of the system, that&rsquo;s when it starts to get tricky.</p>
+<p>Expensive changes are cascading changes. When I change this, I need to change all these other things. Suddenly I&rsquo;ve changed everything.</p>
+<p>Coupling between design elements is tendency to propagate change. The knowledge of how two things are connected is what causes them to need to change together.</p>
+<p>Design = cost = change = big change = coupling</p>
+<p>Software design = managing coupling
+(reworked graph, relabel with &ldquo;less coupling&rdquo; and &ldquo;more coupling&rdquo;)</p>
+<p>Initially it doesn&rsquo;t feel that way, initially it doesn&rsquo;t feel that way. Initially you can get a lot more by making everything know about each other through coupling. Doing this you get a real boost right at the first bit. Now you can show off something with the complete feature set.</p>
+<p>But that&rsquo;s planting your flowers into your weedy garden.</p>
+<p>So initially you might feel great, but in the long run it&rsquo;s better to go with a loosely coupled system.</p>
+<p>But is coupling bad? Coupling is not bad. Coupling is a fight you have inside yourself. A great person told me inside you there are two wolves. That&rsquo;s really what it comes down to, you as someone trying to make something as good as you can. If you go all the way in one direction the cost is high. If you go all the way in the other, the cost is also high. These are not my ideas, these are from Kent Beck talking about Microservices. (graph)</p>
+<p>However, it&rsquo;s hard to tell people what not to do. Saying don&rsquo;t couple things together is like telling someone who is about to crash not to drive into the pole. You want to turn instead of driving into the pole, but in your head if you&rsquo;re saying &ldquo;don&rsquo;t hit the pole, don&rsquo;t hit the pole&rdquo; well you&rsquo;re going to hit the pole.</p>
+<p>Don&rsquo;t think about coupling, thing about the other side of it&ndash; think about cohesion. Coupling and cohesion is all we have to think about in software design. Cohesion is easier to move towards than saying &ldquo;oh move away from that&rdquo;. That is, things that need to change, go together.</p>
+<p>Cohesion changes with new requirements so you&rsquo;re going to get out your trough and you&rsquo;re going to get going with your refactoring.</p>
+<p><a href="https://youtu.be/PW6eYMalHLI?t=470">https://youtu.be/PW6eYMalHLI?t=470</a></p>
+<p>Refactorings sorted by most code smells</p>
+<ul>
+<li>Extract function
+<ul>
+<li>Data class: Create a function that can be moved into a class</li>
+<li>Duplicated code: Extract and name a fragment to reuse it</li>
+<li>Mutable data: Separate side-effect-free code from the update</li>
+<li>Comments: Explain how code works with a good name</li>
+<li>Long function: Shorten a function by extracting named steps</li>
+</ul>
+</li>
+<li>Move function
+<ul>
+<li>Alternative classes with different interfaces: Move behaviour till protocols match</li>
+<li>Data class: Move behaviour to the data class</li>
+<li>Inside trader: Reduce calls between objects by moving functions closer to their source</li>
+<li>Temporary field: Group and move code keying off flags to clarify purpose</li>
+</ul>
+</li>
+<li>Introduce parameter object
+<ul>
+<li>Long paramaterised list: Turn many arguments into one</li>
+<li>Data clumps: Intems that travel together should live together</li>
+<li>Primitive obsession: Items that travel together should live together</li>
+<li>Long function: Create an object from paramsand move behaviours there</li>
+</ul>
+</li>
+<li>Extract class
+<ul>
+<li>Primitive obsession: Use on fields to turn clumps into objects</li>
+<li>Data clumps: Bundle types that travel together into a class</li>
+<li>Large class: Bundle variables whcih got together in another class</li>
+<li>Temporary field: Move special cases into their own class or subclass</li>
+</ul>
+</li>
+<li>Inline function
+<ul>
+<li>Lazy element: Inline functions we expect to grow but never realised it&rsquo;s dreams</li>
+<li>Middle man: A class mostly delegating to another class</li>
+<li>Speculative generality: Classes we thought we&rsquo;d need it one day</li>
+</ul>
+</li>
+</ul>
+<p>If you&rsquo;re doing this there are things that have your back making changes. One is your test harnesses to prove your system continues to function. The other is your git history, you can always roll back to something that worked.</p>
+<p>Why no VCR love? Why do people find it hard to work with VCR?</p>
+<ul>
+<li>The scenarios weren&rsquo;t very well described</li>
+<li>It can be hard to regeneratre them</li>
+<li>Worst when someone manually edited the VCR</li>
+<li>Benign things like renaming tests results in failures&quot;</li>
+<li>Some VCR responses are so old that it&rsquo;s impossible for them to accurately be regenerated</li>
+</ul>
+<p>VCR sits on the boundary of your system. It recoreds the HTTP interactions that head out against real live systems. If the data over ther changes, then the responses become stale and you won&rsquo;t be able to recreate the same test.</p>
+<p>If the state changes, the assertions about behaviour are likely to be wrong.</p>
+<p>But I don&rsquo;t want to tell you how to avoid driving into a pole, lets focus on something which makes sense. Tests are coupling. Coupling is not bad, it&rsquo;s just a way to give yourself a feedback loop.</p>
+<p>Hot take: If you&rsquo;re saying to the people around you, I want to go faster. These tests are holding me back, they&rsquo;re stopping me from releasing. Well just remove them. Murder your darlings, throw your broken tests into the sun.</p>
+<p>VCRs are a form of Snapshot testing. They don&rsquo;t describe things that affect our users very well, but they do describe how our system works at a point in time. You can introduce them to introduce larger changes to move behaviour around without having to couple yourself to the structure of your code. They are a fast way of getting complete coverage of large swoths of code before making refactoring changes. If you&rsquo;re finished, then the usefulness of those tests is diminished. Once finished, it&rsquo;s better to write tests from the perspective of what matters to customers. If a test breaks in the future, and there&rsquo;s a compelling story from a business case that says &ldquo;customers would like to see that they&rsquo;re billed on time&rdquo; or something like that, then I&rsquo;d go &ldquo;I had better pay attention to that. However, if I see &ldquo;the value of a is 3&rdquo; then I&rsquo;ll just update the value to 4. I don&rsquo;t know if that&rsquo;s right, someone might even get upset but I can&rsquo;t tell that from the code. If you rewrite your test with customers in mind then that is saving something really useful. Who else needs to maintain them.</p>
+<p>That&rsquo;s my hot take. Throw them into the sun, start again, recreate them, they&rsquo;re cheep tests. This doesn&rsquo;t have to be VCR, that&rsquo;s just one library. You can save entire bits of JSON out, it&rsquo;s just a way of getting speed.</p>
+<p>Another thing I&rsquo;ve seen is &ldquo;I&rsquo;ve finished writing the code, now all I need is to write the tests&rdquo;. This comes from a good place &ldquo;I write tests because I&rsquo;m good at my job and it&rsquo;s the thing to do&rdquo;. However tests give you a way to see your code in action, they are the first implementors of your public API.</p>
+<p>If you have a test in place then you can see the API as it evolves. If it gets big and clunky you can reflect on that and apply some refactorings to make it simpler. And it becomes beautiful. Because instead of promising the team that you&rsquo;ve finished, feeling the pressure, then locking in that design that you&rsquo;ve come up with, you have that feedback early and you can change it to be loosely coupled.</p>
+<p>Problem: Huge code review!</p>
+<p>Git is a greaet way of cheeply creating branches, and you can use the names of those branches to communicate their intent. Martin Fowler put out a pattern in a blog post ages ago. The idea is to make changes ahead of the feature that&rsquo;s coming. Refactoring means changing the structure of code without changing the behaviour of the system.</p>
+<p>So code reviewer&rsquo;s objective for a preparatory refactoring branch would be regression&ndash; does the code express the same behaviour. When someone reviews a feature branch, they&rsquo;re looking at the new functionality. The feature branch is generally what is being asked for from your story.</p>
+<p><a href="https://youtu.be/PW6eYMalHLI?t=1235">https://youtu.be/PW6eYMalHLI?t=1235</a></p>
+<blockquote>
+<p>Your thesis can be in the solution only if your readers can perceive the problem.
+from <a href="https://youtu.be/vtIzMaLkCaM?t=3495">https://youtu.be/vtIzMaLkCaM?t=3495</a></p></blockquote>
+
+</body>
+</html>
+

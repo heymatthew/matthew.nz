@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+        <link rel="stylesheet" href="/styles.min.f304ab2294c9528a708b5965247b1c35bf3e7083db1ec440beeb55aeee2873e9.css" integrity="sha256-8wSrIpTJUopwi1llJHscNb8&#43;cIPbHsRAvutVru4oc&#43;k=" crossorigin="anonymous">
+    
+</head>
+<body>
+
+    <h1>Pr Detective</h1>
+    <p>TIL that you can find the PR which merged a commit using git log. It&rsquo;s now a handy alias.</p>
+<p>TLDR:</p>
+<p>git config &ndash;global alias.trace &lsquo;!git log $1..origin/head &ndash;ancestry-path &ndash;merges &ndash;reverse&rsquo;
+Which lets you do stuff like:
+λ git trace f657f2af17</p>
+<p>commit 73367365520ba1a1d7049ad47895d599cf207358
+Merge: 3ae38debb f657f2af1
+Author: Elspeth Dick <a href="mailto:elspethdick@gmail.com">elspethdick@gmail.com</a>
+Date:   Tue Jul 5 01:02:58 2022 +1200</p>
+<pre><code>Merge pull request #1832 from FlickElectric/en-776-feat-reenable-payable-adjustments-in-billing-pipeline
+
+En 776 CHORE Reenable Payable Adjustments In Billing Pipeline
+</code></pre>
+<p>&hellip;
+So you know that commit was part of PR#1832</p>
+<p>Why?</p>
+<p>Git log usually shows you a history of what lead up to a change, but if you use the &ndash;ancestry-path flag you get it the other way round&ndash; what came after this thing.
+You can then filter further to bring up only merges with &ndash;merges.
+But it&rsquo;s also most recent first which can be reversed with &ndash;reverse. Generally speaking I&rsquo;m looking oldest commit first because these commits are usually way in the past.
+The result is a list of merges that happened after a commit. Github merge PR# can be found in the message.</p>
+
+</body>
+</html>
+
